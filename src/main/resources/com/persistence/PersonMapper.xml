@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.persistence.PersonMapper">
+
+  <cache />
+
+  <select id="findPerson" parameterType="string" resultType="Person">
+	select id,name from person where id=#{id}
+  </select>
+
+  <select id="queryAllPerson"  resultType="Person">
+   select id,name from person
+  </select>
+
+  <update id="updatePerson" parameterType="Person">
+   update Person set name=#{name} where id=#{id}
+  </update>
+
+  <insert id="insertPerson" parameterType="Person">
+    insert into person (name) values(#{name})
+  </insert>
+
+  <delete id="deletePerson" parameterType="string">
+  	delete from person where id=#{id}
+  </delete>	
+</mapper>
